@@ -3,15 +3,28 @@ import connectBleuLogo from "./assets/internet.png";
 import "./App.css";
 
 function App() {
-  const [input, setInput] = useState("Enter phone number");
+  const [input, setInput] = useState("Enter Phone Number");
+  const [subscribed, setSubscribed] = useState(false);
 
-  const handleChange = (e) => {
-    setInput((input) => e.target.value);
+  const handleFocus = () => {
+    setInput("");
   };
 
-  const handleClick = (event) => {
-    event.preventDefault();
-    console.log(event);
+  const handleBlur = () => {
+    setInput("Enter Phone Number");
+  };
+
+  const handleChange = (event) => {
+    setInput(event.target.value);
+  };
+
+  const handleClick = () => {
+    setSubscribed(!subscribed);
+    setInput("Enter Phone Number");
+  };
+
+  const SuccessMessage = () => {
+    subscribed ?? <p>You are now subscribed for Assistext!</p>;
   };
 
   return (
@@ -26,12 +39,15 @@ function App() {
         <div>
           <input
             type="text"
-            onChange={handleChange}
-            value={"" + input}
-            autoComplete="off"
+            onInput={handleChange}
+            onFocus={handleFocus}
+            value={input}
           />
         </div>
-        <button>Submit</button>
+        <button onClick={handleClick}>Subscribe</button>
+
+        {subscribed ?? <SuccessMessage />}
+
         <p>
           By providing your phone number, you agree to have SMS conversations
           with Assistext from ConnectBleu. Message frequency may vary. Standard
