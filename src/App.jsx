@@ -3,7 +3,16 @@ import connectBleuLogo from "./assets/internet.png";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [input, setInput] = useState("Enter phone number");
+
+  const handleChange = (e) => {
+    setInput((input) => e.target.value);
+  };
+
+  const handleClick = (event) => {
+    event.preventDefault();
+    console.log(event);
+  };
 
   return (
     <>
@@ -15,10 +24,14 @@ function App() {
       <h1>ConnectBleu</h1>
       <div className="card">
         <div>
-          {" "}
-          <input placeholder="Enter phone number" />
+          <input
+            type="text"
+            onChange={handleChange}
+            value={"" + input}
+            autoComplete="off"
+          />
         </div>
-        <button onClick={() => setCount((count) => count + 1)}>Submit</button>
+        <button>Submit</button>
         <p>
           By providing your phone number, you agree to have SMS conversations
           with Assistext from ConnectBleu. Message frequency may vary. Standard
