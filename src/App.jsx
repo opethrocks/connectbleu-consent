@@ -8,10 +8,12 @@ function App() {
 
   const handleFocus = () => {
     setInput("");
+    setSubscribed(false);
   };
 
   const handleBlur = () => {
     setInput("Enter Phone Number");
+    setSubscribed(false);
   };
 
   const handleChange = (event) => {
@@ -19,12 +21,11 @@ function App() {
   };
 
   const handleClick = () => {
-    setSubscribed((prevState) => !prevState);
-    // setInput("Enter Phone Number");
+    setSubscribed(true);
   };
 
   const SuccessMessage = () => {
-    return <p className="subscribed">You are now subscribed to Assistext!</p>;
+    <p className="subscribed">You are now subscribed to Assistext!</p>;
   };
 
   return (
@@ -43,6 +44,7 @@ function App() {
             type="text"
             onInput={handleChange}
             onFocus={handleFocus}
+            onBlur={handleBlur}
             value={input}
             className={subscribed ? "input-success" : ""}
           />
@@ -57,7 +59,10 @@ function App() {
           promotional or marketing purposes.
         </p>
       </div>
-      <p className="lato-regular">Contact: matt@connectbleu.com</p>
+      <p className="lato-regular">
+        Contact:
+        <a href="mailto:matt@connectbleu.com"> matt@connectbleu.com</a>
+      </p>
     </>
   );
 }
