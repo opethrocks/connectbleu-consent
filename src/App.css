@@ -79,12 +79,12 @@
 }
 
 .contact-card {
-  padding: 10px 500px 10px 500px;
+  padding: 10px 0px 10px 0px;
 }
 
 .contact-icon {
   padding-top: 17px;
-  left: 550px;
+  left: 850px;
   position: absolute;
 }
 
