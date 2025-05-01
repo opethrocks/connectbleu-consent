@@ -3,7 +3,29 @@ import connectBleuLogo from "./assets/internet.png";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [input, setInput] = useState("Enter Phone Number");
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleFocus = () => {
+    setInput("");
+  };
+
+  const handleBlur = () => {
+    setInput("Enter Phone Number");
+  };
+
+  const handleChange = (event) => {
+    setInput(event.target.value);
+  };
+
+  const handleClick = () => {
+    setSubscribed((prevState) => !prevState);
+    // setInput("Enter Phone Number");
+  };
+
+  const SuccessMessage = () => {
+    return <p className="subscribed">You are now subscribed to Assistext!</p>;
+  };
 
   return (
     <>
@@ -13,13 +35,21 @@ function App() {
         </a>
       </div>
       <h1>ConnectBleu</h1>
+      {subscribed ? <SuccessMessage /> : <p></p>}
+
       <div className="card">
         <div>
-          {" "}
-          <input placeholder="Enter phone number" />
+          <input
+            type="text"
+            onInput={handleChange}
+            onFocus={handleFocus}
+            value={input}
+            className={subscribed ? "input-success" : ""}
+          />
         </div>
-        <button onClick={() => setCount((count) => count + 1)}>Submit</button>
-        <p>
+        <button onClick={handleClick}>Subscribe</button>
+
+        <p className={`${"terms"} ${"termsfont"}`}>
           By providing your phone number, you agree to have SMS conversations
           with Assistext from ConnectBleu. Message frequency may vary. Standard
           Message and Data Rates may apply. Reply STOP to opt out. Reply HELP
@@ -27,7 +57,7 @@ function App() {
           promotional or marketing purposes.
         </p>
       </div>
-      <p className="read-the-docs">Contact: matt@connectbleu.com</p>
+      <p className="lato-regular">Contact: matt@connectbleu.com</p>
     </>
   );
 }
