@@ -25,11 +25,7 @@ function App() {
   };
 
   const SuccessMessage = () => {
-    isSubscribed ? (
-      <p className="subscribed">You are now subscribed to Assistext!</p>
-    ) : (
-      <p>Enter phone number to subscribe to Assistext.</p>
-    );
+    return <p className="subscribed">You are now subscribed to Assistext!</p>;
   };
 
   return (
@@ -40,7 +36,11 @@ function App() {
         </a>
       </div>
       <h1>ConnectBleu</h1>
-      <SuccessMessage />
+      {isSubscribed ? (
+        <SuccessMessage />
+      ) : (
+        <p>Please enter your 10 digit phone number to subscribe</p>
+      )}
 
       <div className="card">
         <div>
