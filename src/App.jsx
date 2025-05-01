@@ -3,24 +3,25 @@ import connectBleuLogo from "./assets/internet.png";
 import "./App.css";
 
 function App() {
-  const [input, setInput] = useState("Enter Phone Number");
-  const [subscribed, setSubscribed] = useState(false);
+  const [userInput, setUserInput] = useState("Enter Phone Number");
+  const [isSubscribed, setIsSubscribed] = useState(false);
 
   const handleFocus = () => {
-    setInput("");
+    setUserInput("");
+    setIsSubscribed(false);
   };
 
   const handleBlur = () => {
-    setInput("Enter Phone Number");
+    setUserInput("Enter Phone Number");
+    setIsSubscribed(false);
   };
 
   const handleChange = (event) => {
-    setInput(event.target.value);
+    setUserInput(event.target.value);
   };
 
   const handleClick = () => {
-    setSubscribed((prevState) => !prevState);
-    // setInput("Enter Phone Number");
+    setIsSubscribed((prevState) => !prevState);
   };
 
   const SuccessMessage = () => {
@@ -35,7 +36,11 @@ function App() {
         </a>
       </div>
       <h1>ConnectBleu</h1>
-      {subscribed ? <SuccessMessage /> : <p></p>}
+      {isSubscribed ? (
+        <SuccessMessage />
+      ) : (
+        <p>Please enter your 10 digit phone number to subscribe</p>
+      )}
 
       <div className="card">
         <div>
@@ -43,8 +48,9 @@ function App() {
             type="text"
             onInput={handleChange}
             onFocus={handleFocus}
-            value={input}
-            className={subscribed ? "input-success" : ""}
+            onBlur={handleBlur}
+            value={userInput}
+            className={isSubscribed ? "input-success" : ""}
           />
         </div>
         <button onClick={handleClick}>Subscribe</button>
@@ -57,7 +63,10 @@ function App() {
           promotional or marketing purposes.
         </p>
       </div>
-      <p className="lato-regular">Contact: matt@connectbleu.com</p>
+      <p className="lato-regular">
+        Contact:
+        <a href="mailto:matt@connectbleu.com"> matt@connectbleu.com</a>
+      </p>
     </>
   );
 }

@@ -46,6 +46,11 @@
   font-weight: bold;
 }
 
+.invalid-text {
+  color: lightcoral;
+  font-weight: bold;
+}
+
 .terms {
   font-size: small;
 }
@@ -69,9 +74,25 @@
   margin-bottom: 10px;
 }
 
+.input-error {
+  border-radius: 8px;
+  border: 3px solid red;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: rgb(252, 82, 82);
+  margin-bottom: 10px;
+}
+
 .lato-regular {
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: normal;
-  color: cornflowerblue;
+}
+
+.brand {
+  font-family: "Imperial Script", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
