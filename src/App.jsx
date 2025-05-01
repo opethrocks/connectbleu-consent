@@ -1,5 +1,9 @@
 import { useState } from "react";
 import connectBleuLogo from "./assets/internet.png";
+import phoneIcon from "./assets/phone.svg";
+import mailIcon from "./assets/mail.svg";
+import checkIcon from "./assets/check.svg";
+
 import "./App.css";
 
 function App() {
@@ -25,7 +29,14 @@ function App() {
   };
 
   const SuccessMessage = () => {
-    return <p className="subscribed">You are now subscribed to Assistext!</p>;
+    return (
+      <div>
+        <p className="subscribed">
+          You are now subscribed to Assistext!
+          <img className="subscribed-icon" src={checkIcon} />
+        </p>
+      </div>
+    );
   };
 
   return (
@@ -43,7 +54,8 @@ function App() {
       )}
 
       <div className="card">
-        <div>
+        <div className="input-with-icon">
+          <img class="phone-icon" src={phoneIcon} />
           <input
             type="text"
             onInput={handleChange}
@@ -53,7 +65,9 @@ function App() {
             className={isSubscribed ? "input-success" : ""}
           />
         </div>
-        <button onClick={handleClick}>Subscribe</button>
+        <button onClick={handleClick} className="subscribe-button">
+          Subscribe
+        </button>
 
         <p className={`${"terms"} ${"termsfont"}`}>
           By providing your phone number, you agree to have SMS conversations
@@ -63,10 +77,15 @@ function App() {
           promotional or marketing purposes.
         </p>
       </div>
-      <p className="lato-regular">
-        Contact:
-        <a href="mailto:matt@connectbleu.com"> matt@connectbleu.com</a>
-      </p>
+      <div className="contact-card">
+        <img className="contact-icon" src={mailIcon} />
+        <p className="contact-info">
+          <a href="mailto:matt@connectbleu.com" className="email">
+            {" "}
+            matt@connectbleu.com
+          </a>
+        </p>
+      </div>
     </>
   );
 }
