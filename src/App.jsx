@@ -19,12 +19,12 @@ function App() {
   };
 
   const handleClick = () => {
-    setSubscribed(!subscribed);
-    setInput("Enter Phone Number");
+    setSubscribed((prevState) => !prevState);
+    // setInput("Enter Phone Number");
   };
 
   const SuccessMessage = () => {
-    subscribed ?? <p>You are now subscribed for Assistext!</p>;
+    return <p className="subscribed">You are now subscribed to Assistext!</p>;
   };
 
   return (
@@ -35,6 +35,8 @@ function App() {
         </a>
       </div>
       <h1>ConnectBleu</h1>
+      {subscribed ? <SuccessMessage /> : <p></p>}
+
       <div className="card">
         <div>
           <input
@@ -42,13 +44,12 @@ function App() {
             onInput={handleChange}
             onFocus={handleFocus}
             value={input}
+            className={subscribed ? "input-success" : ""}
           />
         </div>
         <button onClick={handleClick}>Subscribe</button>
 
-        {subscribed ?? <SuccessMessage />}
-
-        <p>
+        <p className={`${"terms"} ${"termsfont"}`}>
           By providing your phone number, you agree to have SMS conversations
           with Assistext from ConnectBleu. Message frequency may vary. Standard
           Message and Data Rates may apply. Reply STOP to opt out. Reply HELP
@@ -56,7 +57,7 @@ function App() {
           promotional or marketing purposes.
         </p>
       </div>
-      <p className="read-the-docs">Contact: matt@connectbleu.com</p>
+      <p className="lato-regular">Contact: matt@connectbleu.com</p>
     </>
   );
 }
