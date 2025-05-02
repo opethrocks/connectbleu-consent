@@ -90,15 +90,15 @@ function App() {
           out. Reply HELP for help. We will not share mobile information with
           third parties for promotional or marketing purposes.
         </p>
+        <p>
+          <div className="contact-info">
+            <a href="mailto:matt@connectbleu.com" className="email">
+              <img className="contact-icon" src={mailIcon} />
+              matt@connectbleu.com
+            </a>
+          </div>
+        </p>
       </div>
-      <p>
-        <div className="contact-info">
-          <a href="mailto:matt@connectbleu.com" className="email">
-            <img className="contact-icon" src={mailIcon} />
-            matt@connectbleu.com
-          </a>
-        </div>
-      </p>
     </>
   );
 }

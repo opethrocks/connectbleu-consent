@@ -69,13 +69,12 @@
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: normal;
-  color: rgb(131, 2, 77);
 }
 
 .contact-icon {
   position: relative;
   right: 0.25em;
-  top: 0.5em;
+  top: 0.3em;
 }
 
 .subscribe-icon-container {
@@ -86,7 +85,7 @@
 .subscribe-icon {
   position: relative;
   top: 0.55em;
-  left: 0.25em;
+  left: 0.35em;
 }
 
 .phone-icon {
@@ -96,7 +95,8 @@
   color: #000000;
   transition: 0.3s;
   position: relative;
-  top: 0.15em;
+  top: 0.25em;
+  left: 0.25em;
 }
 
 .phone-icon-container {
