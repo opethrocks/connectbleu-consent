@@ -31,7 +31,7 @@ function App() {
   const SuccessMessage = () => {
     return (
       <div>
-        <p className="subscribed">
+        <p>
           You are now subscribed to Assistext!
           <img className="subscribed-icon" src={checkIcon} />
         </p>
@@ -47,14 +47,17 @@ function App() {
         </a>
       </div>
       <h1>ConnectBleu</h1>
-      {isSubscribed ? (
-        <SuccessMessage />
-      ) : (
-        <p>Please enter your 10 digit phone number to subscribe</p>
-      )}
 
       <div className="card">
-        <div className="input-with-icon">
+        <div>
+          {isSubscribed ? (
+            <SuccessMessage />
+          ) : (
+            <p>Enter your phone number to subscribe</p>
+          )}
+        </div>
+
+        <div>
           <img class="phone-icon" src={phoneIcon} />
           <input
             type="text"
@@ -69,7 +72,7 @@ function App() {
           Subscribe
         </button>
 
-        <p className={`${"terms"} ${"termsfont"}`}>
+        <p className="terms">
           By providing your phone number, you agree to have SMS conversations
           with Assistext from ConnectBleu. Message frequency may vary. Standard
           Message and Data Rates may apply. Reply STOP to opt out. Reply HELP
@@ -77,15 +80,14 @@ function App() {
           promotional or marketing purposes.
         </p>
       </div>
-      <div className="contact-card">
-        <img className="contact-icon" src={mailIcon} />
-        <p className="contact-info">
+      <p>
+        <div className="contact-info">
+          <img className="contact-icon" src={mailIcon} />
           <a href="mailto:matt@connectbleu.com" className="email">
-            {" "}
             matt@connectbleu.com
           </a>
-        </p>
-      </div>
+        </div>
+      </p>
     </>
   );
 }
