@@ -24,8 +24,8 @@
 
 .subscribed-icon {
   position: relative;
-  top: 0.25em;
-  left: 0.25em;
+  top: 0.75em;
+  left: 0.75em;
 }
 
 .invalid-text {
@@ -34,21 +34,33 @@
 }
 
 .terms {
-  font-size: smaller;
+  font-size: 0.85em;
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 1;
+  font-weight: 100;
   font-style: normal;
   font-variation-settings: "wdth" 100;
 }
 
-.input-success {
+.button-success {
   border-radius: 8px;
-  border: 1px solid rgb(1, 205, 1);
+  border: 1px solid #01cd01;
+  padding: 0.75em 2.25em;
   font-size: 1em;
   font-weight: 350;
   font-family: inherit;
-  background-color: rgb(0, 109, 0);
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.input-success {
+  border-radius: 8px;
+  border: 1px solid #01cd01;
+  font-size: 1em;
+  font-weight: 350;
+  font-family: inherit;
+  background-color: #1a1a1a;
   padding: 0.75em 0em 0.75em 3.5em;
   margin-bottom: 1em;
 }
@@ -57,21 +69,40 @@
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: normal;
+  color: rgb(131, 2, 77);
 }
 
 .contact-icon {
   position: relative;
   right: 0.25em;
-  top: 0.25em;
+  top: 0.5em;
+}
+
+.subscribe-icon-container {
+  position: absolute;
+  padding: 0.25em;
+}
+
+.subscribe-icon {
+  position: relative;
+  top: 0.55em;
+  left: 0.25em;
 }
 
 .phone-icon {
   left: 100;
   top: 0px;
   padding: 9px 8px;
-  color: #aaa;
+  color: #000000;
   transition: 0.3s;
   position: relative;
-  top: 0.75em;
-  left: 2em;
+  top: 0.15em;
+}
+
+.phone-icon-container {
+  position: absolute;
+}
+
+.email {
+  color: #3c7ffd;
 }

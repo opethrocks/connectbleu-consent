@@ -3,11 +3,12 @@ import connectBleuLogo from "./assets/internet.png";
 import phoneIcon from "./assets/phone.svg";
 import mailIcon from "./assets/mail.svg";
 import checkIcon from "./assets/check.svg";
+import subscribeIcon from "./assets/subscribe.svg";
 
 import "./App.css";
 
 function App() {
-  const [userInput, setUserInput] = useState("Enter Phone Number");
+  const [userInput, setUserInput] = useState("Phone Number");
   const [isSubscribed, setIsSubscribed] = useState(false);
 
   const handleFocus = () => {
@@ -16,7 +17,7 @@ function App() {
   };
 
   const handleBlur = () => {
-    setUserInput("Enter Phone Number");
+    setUserInput("Phone Number");
     setIsSubscribed(false);
   };
 
@@ -31,10 +32,7 @@ function App() {
   const SuccessMessage = () => {
     return (
       <div>
-        <p>
-          You are now subscribed to Assistext!
-          <img className="subscribed-icon" src={checkIcon} />
-        </p>
+        <p>You are now subscribed to Assistext!</p>
       </div>
     );
   };
@@ -58,9 +56,16 @@ function App() {
         </div>
 
         <div>
-          <img class="phone-icon" src={phoneIcon} />
+          <span className="phone-icon-container">
+            {isSubscribed ? (
+              <img className="subscribed-icon" src={checkIcon} />
+            ) : (
+              <img class="phone-icon" src={phoneIcon} />
+            )}
+          </span>
           <input
             type="text"
+            id="phone"
             onInput={handleChange}
             onFocus={handleFocus}
             onBlur={handleBlur}
@@ -68,22 +73,27 @@ function App() {
             className={isSubscribed ? "input-success" : ""}
           />
         </div>
-        <button onClick={handleClick} className="subscribe-button">
+        <span className="subscribe-icon-container">
+          <img className="subscribe-icon" src={subscribeIcon} />
+        </span>
+        <button
+          onClick={handleClick}
+          className={isSubscribed ? "button-success" : ""}
+        >
           Subscribe
         </button>
 
         <p className="terms">
-          By providing your phone number, you agree to have SMS conversations
-          with Assistext from ConnectBleu. Message frequency may vary. Standard
-          Message and Data Rates may apply. Reply STOP to opt out. Reply HELP
-          for help. We will not share mobile information with third parties for
-          promotional or marketing purposes.
+          By providing your phone number, you agree to receive SMS messages.
+          Message frequency may vary. Standard Message and Data Rates may apply.
+          Reply STOP to opt out. Reply HELP for help. We will not share mobile
+          information with third parties for promotional or marketing purposes.
         </p>
       </div>
       <p>
         <div className="contact-info">
-          <img className="contact-icon" src={mailIcon} />
           <a href="mailto:matt@connectbleu.com" className="email">
+            <img className="contact-icon" src={mailIcon} />
             matt@connectbleu.com
           </a>
         </div>
