@@ -84,10 +84,11 @@ function App() {
         </button>
 
         <p className="terms">
-          By providing your phone number, you agree to receive SMS messages.
-          Message frequency may vary. Standard Message and Data Rates may apply.
-          Reply STOP to opt out. Reply HELP for help. We will not share mobile
-          information with third parties for promotional or marketing purposes.
+          By providing your phone number, you agree to receive SMS messages from
+          Assistext, the AI assistant at ConnectBleu. Message frequency may
+          vary. Standard Message and Data Rates may apply. Reply STOP to opt
+          out. Reply HELP for help. We will not share mobile information with
+          third parties for promotional or marketing purposes.
         </p>
       </div>
       <p>
