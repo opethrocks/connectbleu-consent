@@ -54,9 +54,32 @@
   transition: border-color 0.25s;
 }
 
+.button-invalid {
+  border-radius: 8px;
+  border: 1px solid lightcoral;
+  padding: 0.75em 2.25em;
+  font-size: 1em;
+  font-weight: 350;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
 .input-success {
   border-radius: 8px;
   border: 1px solid #01cd01;
+  font-size: 1em;
+  font-weight: 350;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  padding: 0.75em 0em 0.75em 3.5em;
+  margin-bottom: 1em;
+}
+
+.input-invalid {
+  border-radius: 8px;
+  border: 1px solid lightcoral;
   font-size: 1em;
   font-weight: 350;
   font-family: inherit;
