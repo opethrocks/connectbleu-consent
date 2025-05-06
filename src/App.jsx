@@ -4,11 +4,10 @@ import connectBleuLogo from "./assets/internet.png";
 import phoneIcon from "./assets/phone.svg";
 import mailIcon from "./assets/mail.svg";
 import checkIcon from "./assets/check.svg";
-import subscribeIcon from "./assets/subscribe.svg";
 import "./App.css";
 
 function App() {
-  const [userInput, setUserInput] = useState("Phone Number");
+  const [userInput, setUserInput] = useState();
   const [isSubscribed, setIsSubscribed] = useState();
   const [isValidNumber, setIsValidNumber] = useState();
   const [invalidInput, setInvalidInput] = useState();
@@ -88,8 +87,10 @@ function App() {
           <input
             type="text"
             id="phone"
+            autoComplete="off"
             onInput={handleChange}
             onFocus={handleFocus}
+            placeholder="Phone number"
             value={userInput}
             className={
               invalidInput
@@ -100,9 +101,6 @@ function App() {
             }
           />
         </div>
-        <span className="subscribe-icon-container">
-          <img className="subscribe-icon" src={subscribeIcon} />
-        </span>
         <button
           onClick={handleClick}
           className={
