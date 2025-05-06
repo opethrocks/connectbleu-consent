@@ -47,8 +47,9 @@
   border: 1px solid #01cd01;
   padding: 0.75em 2.25em;
   font-size: 1em;
-  font-weight: 350;
-  font-family: inherit;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
@@ -59,8 +60,9 @@
   border: 1px solid lightcoral;
   padding: 0.75em 2.25em;
   font-size: 1em;
-  font-weight: 350;
-  font-family: inherit;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
