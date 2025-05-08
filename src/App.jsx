@@ -7,37 +7,45 @@ import checkIcon from "./assets/check.svg";
 import "./App.css";
 
 function App() {
-  const [userInput, setUserInput] = useState();
+  const [userInput, setUserInput] = useState("");
   const [isSubscribed, setIsSubscribed] = useState();
   const [isValidNumber, setIsValidNumber] = useState();
   const [invalidInput, setInvalidInput] = useState();
 
   const phoneNumberVerification = async () => {
-    try {
-      const {
-        data: {
-          data: { valid_number: validNumber },
-        },
-      } = await axios.get(
-        `https://api.telnyx.com/v2/number_lookup/${userInput}`,
-        {
-          headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_TELNYX_API_KEY}`,
-            Accept: "application/json",
+    const userInputValidation = /^\d{10}$/;
+    if (userInputValidation.test(userInput)) {
+      try {
+        const {
+          data: {
+            data: { valid_number: validNumber },
           },
-          params: {
-            phone_number: userInput,
-          },
-        }
-      );
-      setIsValidNumber(validNumber);
-    } catch ({ response: { data } }) {
-      setInvalidInput(data.errors[0].detail);
+        } = await axios.get(
+          `https://api.telnyx.com/v2/number_lookup/+1${userInput}`,
+          {
+            headers: {
+              Authorization: `Bearer ${import.meta.env.VITE_TELNYX_API_KEY}`,
+              Accept: "application/json",
+            },
+            params: {
+              phone_number: userInput,
+            },
+          }
+        );
+        validNumber
+          ? setIsValidNumber(validNumber)
+          : console.log({ valid_number: { validNumber } });
+      } catch ({ response: { data } }) {
+        setInvalidInput(data.errors[0].detail);
+      }
+    } else {
+      setInvalidInput("Please enter a valid 10 digit phone number");
+      setIsValidNumber(false);
     }
   };
 
   const handleFocus = () => {
-    setUserInput("+1");
+    setUserInput("");
     setInvalidInput();
     setIsValidNumber();
   };
@@ -56,9 +64,7 @@ function App() {
         <p>
           {isValidNumber
             ? "You are now subscribed to Assistext!"
-            : invalidInput
-            ? invalidInput
-            : "Please enter 10 digit phone number without dashes"}
+            : invalidInput}
         </p>
       </>
     );
@@ -103,6 +109,7 @@ function App() {
         </div>
         <button
           onClick={handleClick}
+          disabled={false}
           className={
             invalidInput
               ? "button-invalid"
