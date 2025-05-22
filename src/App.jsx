@@ -8,12 +8,14 @@ import "./App.css";
 
 function App() {
   const [userInput, setUserInput] = useState("");
-  const [isSubscribed, setIsSubscribed] = useState();
   const [isValidNumber, setIsValidNumber] = useState();
   const [invalidInput, setInvalidInput] = useState();
 
+  const userInputValidation = /^\d{10}$/;
+
   const phoneNumberVerification = async () => {
     const userInputValidation = /^\d{10}$/;
+
     if (userInputValidation.test(userInput)) {
       try {
         const {
@@ -34,7 +36,7 @@ function App() {
         );
         validNumber
           ? setIsValidNumber(validNumber)
-          : console.log({ valid_number: { validNumber } });
+          : setInvalidInput("Please enter a valid number to subscribe");
       } catch ({ response: { data } }) {
         setInvalidInput(data.errors[0].detail);
       }
@@ -55,7 +57,12 @@ function App() {
   };
 
   const handleClick = async () => {
-    await phoneNumberVerification();
+    if (userInputValidation.test(userInput)) {
+      await phoneNumberVerification();
+    } else {
+      setIsValidNumber(false);
+      setInvalidInput("Please enter a valid 10 digit number");
+    }
   };
 
   const SuccessMessage = () => {
@@ -64,7 +71,9 @@ function App() {
         <p>
           {isValidNumber
             ? "You are now subscribed to Assistext!"
-            : invalidInput}
+            : invalidInput
+            ? "Please enter a valid 10 digit number"
+            : ""}
         </p>
       </>
     );
